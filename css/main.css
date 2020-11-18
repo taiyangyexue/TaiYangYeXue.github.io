@@ -453,7 +453,9 @@ body {
   }
 }
 .main {
-  padding-bottom: 150px;
+  padding-bottom: 40px;
+  width: 1200px!important;
+  margin: 0 auto;
 }
 .main-inner {
   margin: 0 auto;
@@ -2674,9 +2676,9 @@ pre .javascript .function {
   float: right;
   box-sizing: border-box;
   /* padding: 40px; */
-  width: 700px;
+  width: 1200px;
   /* background: #fff; */
-  min-height: 700px;
+  min-height: 280px;
   box-shadow: initial;
   border-radius: initial;
 }

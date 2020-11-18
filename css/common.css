@@ -1,3 +1,11 @@
+a{
+    text-decoration: none!important;
+    border: 0!important;
+}
+*{
+    margin: 0 !important;
+    padding: 0!important;
+}
 .bj-one{
 /* background: url(../images/bg2.png) no-repeat;
 background-size: cover; */
@@ -53,6 +61,10 @@ line-height: 60px;
 }
 .layui-laypage .layui-laypage-curr .layui-laypage-em{
     background-color: #2f495e!important;
+}
+.list ul{
+    width: 1200px;
+    margin: 0 auto;
 }
 .list li{
     width: 100%;
