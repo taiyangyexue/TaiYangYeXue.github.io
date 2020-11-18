@@ -1,0 +1,34 @@
+.bj-one{
+/* background: url(../images/bg2.png) no-repeat;
+background-size: cover; */
+background: radial-gradient(circle, white, #FFFDE7)
+}
+.bj-one p{
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    /* font-weight: bolder; */
+    font-size: 46px;
+    color: #ecde5e;
+    text-align: center;
+    display: inline-block;
+    font-family: "苹方字体";
+    text-align: center;
+    width: 100%;
+    line-height: 300px;
+}
+.bj-two p{
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    /* font-weight: bolder; */
+    font-size: 46px;
+    color: #ecde5e;
+    text-align: center;
+    display: inline-block;
+    font-family: "苹方字体";
+    text-align: center;
+    width: 100%;
+    line-height: 300px;
+}
+.bj-two{
+    background:radial-gradient(circle, white, lightblue)
+    /* background: url(../images/top.png) no-repeat; */
+    /* background-size: cover; */
+}

@@ -1268,7 +1268,7 @@ pre .javascript .function {
   opacity: 0;
 }
 .posts-expand {
-  padding-top: 40px;
+  /* padding-top: 40px; */
 }
 @media (max-width: 767px) {
   .posts-expand {
@@ -2673,9 +2673,9 @@ pre .javascript .function {
 .content-wrap {
   float: right;
   box-sizing: border-box;
-  padding: 40px;
+  /* padding: 40px; */
   width: 700px;
-  background: #fff;
+  /* background: #fff; */
   min-height: 700px;
   box-shadow: initial;
   border-radius: initial;
