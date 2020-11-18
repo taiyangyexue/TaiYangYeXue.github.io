@@ -89,6 +89,16 @@
         //,anim: 'updown' //切换动画方式
       });
     });
+    layui.use(['laypage', 'layer'], function () {
+      var laypage = layui.laypage,
+        layer = layui.layer;
+
+      //总页数低于页码总数
+      laypage.render({
+        elem: 'demo0',
+        count: 10 //数据总数
+      });
+    })
   </script>
 
 
@@ -102,7 +112,7 @@
   page-home">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <!-- <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner">
         <div class="site-brand-wrapper">
           <div class="site-meta ">
@@ -172,7 +182,34 @@
           </ul>
         </nav>
       </div>
-    </header>
+    </header> -->
+    <div class="head">
+      <ul>
+        <li class="this">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i>
+            首页
+          </a>
+        </li>
+        <li>
+          <a href="/tags/" rel="section">
+
+            <i class="menu-item-icon fa fa-fw fa-tags"></i>
+
+            标签
+          </a>
+        </li>
+        <li>
+          <a href="/categories/" rel="section">
+
+            <i class="menu-item-icon fa fa-fw fa-th"></i>
+
+            分类
+          </a>
+        </li>
+      </ul>
+    </div>
+
 
     <main id="main" class="main">
       <div class="main-inner">
@@ -268,13 +305,40 @@
       </div>
     </main>
 
+
+    <div class="list">
+      <ul>
+        <li>
+          <img src="./images/vue2.png" alt="">
+          <div>
+            <h4>vue的生命周期</h4>
+            <span>
+              作为一个前端vue必学，首先我们先来了解一下它的生命周期。
+            </span>
+
+          </div>
+        </li>
+        <li>
+          <img src="./images/vue2.png" alt="">
+          <div>
+            <h4>vue的生命周期</h4>
+            <span>
+              作为一个前端vue必学，首先我们先来了解一下它的生命周期。
+            </span>
+
+          </div>
+        </li>
+      </ul>
+      <div id="demo0"></div>
+    </div>
+
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
           <span class="with-love">
             <i class="fa fa-user"></i>
           </span>
-          <span class="author" itemprop="copyrightHolder">TaiYangYeXue</span>
+          <span class="author" itemprop="copyrightHolder">yuxiaobai</span>
 
 
         </div>

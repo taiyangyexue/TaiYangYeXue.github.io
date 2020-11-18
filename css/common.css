@@ -29,6 +29,49 @@ background: radial-gradient(circle, white, #FFFDE7)
 }
 .bj-two{
     background:radial-gradient(circle, white, lightblue)
-    /* background: url(../images/top.png) no-repeat; */
-    /* background-size: cover; */
+
+}
+.head{
+    background: #2f495e;
+    color: #fff;
+    height: 60px;
+line-height: 60px;
+}
+.head ul a{font-size: 18px;color: rgba(255,255,255,.7);}
+.head ul .this a{
+    color: #fff;
+
+}
+.head ul{
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+}
+.head ul li{margin: 0 18px;}
+#demo0{
+    text-align: center;
+}
+.layui-laypage .layui-laypage-curr .layui-laypage-em{
+    background-color: #2f495e!important;
+}
+.list li{
+    width: 100%;
+    display: flex;
+    cursor: pointer;
+    margin-bottom: 10px;
+    /* box-shadow:7px 10px 5px #bca5d521; */
+}
+.list li:hover{
+    box-shadow:7px 10px 5px #bca5d521;
+}
+.list li img{
+    width: 100px;
+}
+.list{
+    color: #666;
+}
+.list h4{
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
 }
