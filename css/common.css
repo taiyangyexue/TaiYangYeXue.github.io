@@ -2,10 +2,6 @@ a{
     text-decoration: none!important;
     border: 0!important;
 }
-*{
-    margin: 0 !important;
-    padding: 0!important;
-}
 .bj-one{
 /* background: url(../images/bg2.png) no-repeat;
 background-size: cover; */
@@ -78,6 +74,7 @@ line-height: 60px;
 }
 .list li img{
     width: 100px;
+    margin: 0 10px 0 0;
 }
 .list{
     color: #666;
