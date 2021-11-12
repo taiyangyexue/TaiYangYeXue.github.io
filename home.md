@@ -141,6 +141,187 @@ ReactDOM.render(
   document.getElementById('example')
 );
 ```
+### 2.7 组件通讯
+#### 2.7.1父组件向子组件通信 父组件通过向子组件传递 props，子组件得到 props 后进行相应的处理。
+#### 父组件：
+```
+import React,{ Component } from "react";
+import Sub from "./SubComponent.js";
+import "./App.css";
+
+export default class App extends Component{
+
+    render(){
+        return(
+            <div>
+                <Sub title = "今年过节不收礼" />
+            </div>
+        )
+    }
+}
+```
+#### 子组件：SubComponent
+```
+import React from "react";
+
+const Sub = (props) => {
+    return(
+        <h1>
+            { props.title }
+        </h1>
+    )
+}
+
+export default Sub;
+```
+#### 2.7.2子组件向父组件通信
+#### 利用回调函数，可以实现子组件向父组件通信：父组件将一个函数作为 props 传递给子组件，子组件调用该回调函数，便可以向父组件通信。
+#### 子组件:SubComponent
+```
+import React from "react";
+
+const Sub = (props) => {
+    const cb = (msg) => {
+        return () => {
+            props.callback(msg)
+        }
+    }
+    return(
+        <div>
+            <button onClick = { cb("我们通信把") }>点击我</button>
+        </div>
+    )
+}
+
+export default Sub;
+```
+#### 父组件
+```
+import React,{ Component } from "react";
+import Sub from "./SubComponent.js";
+import "./App.css";
+
+export default class App extends Component{
+    callback(msg){
+        console.log(msg);
+    }
+    render(){
+        return(
+            <div>
+                <Sub callback = { this.callback.bind(this) } />
+            </div>
+        )
+    }
+}
+```
+#### 2.7.3 使用自定义事件的方式通讯
+```
+npm install events --save
+```
+#### 新建一个 ev.js，引入 events 包，并向外提供一个事件对象，供通信时使用：
+```
+import { EventEmitter } from "events";
+export default new EventEmitter();
+```
+#### home.js
+```
+import React, { Component } from 'react';
+
+import Foo from "./Foo";
+import Boo from "./Boo";
+
+import "./App.css";
+
+export default class App extends Component{
+    render(){
+        return(
+            <div>
+                <Foo />
+                <Boo />
+            </div>
+        );
+    }
+} 
+```
+#### FOO.js
+```
+import React,{ Component } from "react";
+import emitter from "./ev"
+
+export default class Foo extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            msg:null,
+        };
+    }
+    componentDidMount(){
+        // 声明一个自定义事件
+        // 在组件装载完成以后
+        this.eventEmitter = emitter.addListener("callMe",(msg)=>{
+            this.setState({
+                msg
+            })
+        });
+    }
+    // 组件销毁前移除事件监听
+    componentWillUnmount(){
+        emitter.removeListener(this.eventEmitter);
+    }
+    render(){
+        return(
+            <div>
+                { this.state.msg }
+                我是非嵌套 1 号
+            </div>
+        );
+    }
+}
+```
+#### Boo.js
+```
+import React,{ Component } from "react";
+import emitter from "./ev"
+
+export default class Boo extends Component{
+    render(){
+        const cb = (msg) => {
+            return () => {
+                // 触发自定义事件
+                emitter.emit("callMe","Hello")
+            }
+        }
+        return(
+            <div>
+                我是非嵌套 2 号
+                <button onClick = { cb("blue") }>点击我</button>
+            </div>
+        );
+    }
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### 小细节
+#### react 中使用组件第一个字母需大写
+#### react中没有指令（如v-if、v-for等）需自己写三目运算符
 
 
 
