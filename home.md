@@ -154,7 +154,7 @@ export default class App extends Component{
     render(){
         return(
             <div>
-                <Sub title = "今年过节不收礼" />
+                <Sub title = "我是title" />
             </div>
         )
     }
