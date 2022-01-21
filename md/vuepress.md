@@ -104,6 +104,77 @@ npm docs:dev
 npm docs:build
 ```
 
+
+
+
+
+
+
+
+
+
+
+
+#### 配置评论插件
+一个网站,莫过于内容的载体,令你三连击之外,有用户访问,并且能够与你进行互动,有反馈,才会有交流,添加评论,留言的功能也很重要
+今天给大家介绍的是valine评论插件
+
+##### 插件 Valine
+⒈ 一款快速、简洁且高效的无后端评论系统
+
+⒉ 官方文档:[valine](https://valine.js.org/quickstart.html#%E8%8E%B7%E5%8F%96APP-ID-%E5%92%8C-APP-Key)
+
+在使用 valine 之前,先前往leancloud 注册账号(opens new window)
+
+然后创建应用, 获取APP ID和APP KEY
+![hello](../images/valine.png "valine")
+
+
+安装-vuepress-plugin-comment
+```
+yarn add valine -D
+
+yarn add -D  vuepress-plugin-comment
+```
+快速使用
+在.vuepress下的config.js的plugin插件选项中进行配置
+```
+module.exports = {
+  plugins: [
+    [
+      'vuepress-plugin-comment',
+      {
+        choosen: 'valine',
+        // options选项中的所有参数，会传给Valine的配置
+        options: {
+          el: '#valine-vuepress-comment',
+          appId: 'Your own appId',
+          appKey: 'Your own appKey',
+        },
+      },
+    ],
+  ],
+};
+```
+其中appid和appkey为你创建的应用的APP ID 和APP Key，把刚才获取到的秘钥复制过来即可,经过配置之后 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #### 部署上线
 
 #### vuepress 文档部署到 github-pages Github Actions
@@ -204,3 +275,53 @@ jobs:
 ###### 1..yml 格式问题
 
 ###### 2..vuepress 下面 config.js 配置路径问题 把 base 改下
+
+
+
+
+
+
+
+
+部署自动化deploy.sh
+在项目根目录创建deploy.sh，写入以下内容：
+
+# 确保脚本抛出遇到的错误
+set -e
+
+# 编译生成静态文件
+npm run build
+
+# 进入生成的文件夹
+cd docs/.vuepress/dist
+
+git init
+git add -A
+git commit -m 'deploy'
+
+# 发布到上面建立的第一个仓库
+git push -f git@github.com:USERNAME/USERNAME.github.io.git master
+
+# 返回上一次工作目录
+cd -
+在package.json的scripts中添加命令：
+
+{
+  ...
+  "scripts": {
+    "dev": "vuepress dev docs",// 开发环境运行
+    "build": "vuepress build docs",// 打包生成部署环境的文件
+    // 自动执行deploy.sh脚本，执行自动编译并将dist上传至USERNAME.github.io仓库
+    "deploy": "sudo bash deploy.sh",
+  }
+  ...
+}
+这里前面加了一个sudo是因为macOS中执行需要管理员权限，windows下就不用加了，另外windows下执行的话需要在powershell中执行，cmd是不认得这个bash的。
+
+WARNING
+
+差不多一个博客项目就搭建完了，另外还搭建了自动化部署的一整套流程。
+
+写完博客后，在本地运行npm run dev，当然也可以边写边运行，保存后通过热更新可以直接看到效果。
+检查无误后执行npm run deploy，就可以执行deploy.sh脚本执行编译和自动部署。
+另外Typora这个Markdowm编写神器是非常好用👍。
