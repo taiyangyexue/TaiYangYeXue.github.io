@@ -1,0 +1,22 @@
+chrome 98 版本无法设置cookie
+
+zhaiyy lv-3
+2022年02月11日 18:21 ·  阅读 91
+关注
+更新此版本后，尝试配置cookie 失效
+
+image.png
+
+出现红色提示，并且刷新配置cookie 消失
+
+image.png
+
+而且高版本移除了SameSite by default cookies，导致之前的方法不能使用
+
+chrome 为了保护网站隐私导致，具体查看 blog.chromium.org/
+
+修复方式：
+
+浏览器访问 chrome://flags
+
+选择 Partitioned Cookies ，修改为enabled,点击 relaunch 重启浏览器即可
